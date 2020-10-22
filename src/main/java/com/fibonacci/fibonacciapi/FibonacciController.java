@@ -42,15 +42,16 @@ public class FibonacciController {
         counter--;
 
         if(counter < 0){
-            return currentFibSequence;
+            counter = MAX_COUNT;
+            System.out.println("Fibonacci went to the end.");
         }
 
         currentFibSequence = fibonacci(counter);
 
+        System.out.println("Previous Fibonacci was " + currentFibSequence + " at counter " + counter);
+
         return currentFibSequence;
     }
-
-
 
     public long fibonacci(long n) {
         long a = 0, b = 1, c;

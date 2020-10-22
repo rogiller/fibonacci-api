@@ -16,21 +16,31 @@ class FibonacciControllerTest {
     @Test
     void testNext() {
 
-        long current;
+        long current = System.currentTimeMillis();
         long timeTaken;
 
-        current = System.currentTimeMillis();
-
-        for(int i = 0; i < 10000; i++){
-            long next = tested.next();
+        for(int i = 0; i < 3000; i++){
+            tested.next();
         }
 
         timeTaken = System.currentTimeMillis() - current;
+
         System.out.println("Time taken to compute it : " + timeTaken + " milliseconds");
     }
 
     @Test
     void testPrevious() {
+
+        long current = System.currentTimeMillis();
+        long timeTaken;
+
+        for(int i = 0; i < 3000; i++){
+            tested.previous();
+        }
+
+        timeTaken = System.currentTimeMillis() - current;
+
+        System.out.println("Time taken to compute it : " + timeTaken + " milliseconds");
 
     }
 }
