@@ -20,7 +20,13 @@ public class FibonacciController {
 
         counter++;
 
+        if(counter > 92){
+            return currentFibSequence;
+        }
+
         currentFibSequence = fibonacciIterative(counter);
+
+        System.out.println("Next Fib was " + currentFibSequence + " at counter " + counter);
 
         return currentFibSequence;
     }
@@ -61,11 +67,8 @@ public class FibonacciController {
 
         current = System.currentTimeMillis();
 
-        for(int i = 0; i < 30000; i++){
+        for(int i = 0; i < 3000; i++){
             long next = controller.next();
-            //if(i % 100 == 0){
-                System.out.println("Next Fib was " + next);
-           // }
         }
 
         timeTaken = System.currentTimeMillis() - current;
