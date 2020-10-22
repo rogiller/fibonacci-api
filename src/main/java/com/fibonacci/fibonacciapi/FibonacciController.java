@@ -6,27 +6,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FibonacciController {
 
-    private int counter = 0;
+    private long counter = 0;
 
-    private int currentFibSequence = 0;
+    private long currentFibSequence = 0;
 
     @GetMapping("/current")
-    public int current(){
+    public long current(){
         return currentFibSequence;
     }
 
     @GetMapping("/next")
-    public int next(){
+    public long next(){
 
         counter++;
 
-        currentFibSequence = fibonacci(counter);
+        currentFibSequence = fibonacciIterative(counter);
 
         return currentFibSequence;
     }
 
     @GetMapping("/previous")
-    public int previous(){
+    public long previous(){
 
         counter--;
 
@@ -34,26 +34,43 @@ public class FibonacciController {
             return currentFibSequence;
         }
 
-        currentFibSequence = fibonacci(counter);
+        currentFibSequence = fibonacciIterative(counter);
 
         return currentFibSequence;
     }
 
-    public int fibonacci(int n) {
-        return fibonacci(n, new int[n+1]);
+
+
+    public long fibonacciIterative(long n) {
+        long a = 0, b = 1, c;
+        if (n == 0) return a;
+        for (int i = 2; i <= n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
     }
 
-    public int fibonacci(int i, int mem[]) {
+    public static void main(String[] args) {
 
-        if (i==0 || i==1){
-            return i;
+        FibonacciController controller = new FibonacciController();
+
+        long current;
+        long timeTaken;
+
+        current = System.currentTimeMillis();
+
+        for(int i = 0; i < 30000; i++){
+            long next = controller.next();
+            //if(i % 100 == 0){
+                System.out.println("Next Fib was " + next);
+           // }
         }
 
-        if (mem[i] == 0) {
-            mem[i] = fibonacci(i-1, mem) + fibonacci(i-2, mem);
-        }
+        timeTaken = System.currentTimeMillis() - current;
+        System.out.println("Time taken to compute it : " + timeTaken + " milliseconds");
 
-        return mem[i];
     }
 
 }
