@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FibonacciController {
 
+    public static final int MAX_COUNT = 92;
+
     private long counter = 0;
 
     private long currentFibSequence = 0;
@@ -20,13 +22,16 @@ public class FibonacciController {
 
         counter++;
 
-        if(counter > 92){
+        if(counter > MAX_COUNT){
+            counter = 0;
+            currentFibSequence = 0;
+            System.out.println("Fibonacci started over. Now at " + currentFibSequence + " at counter " + counter);
             return currentFibSequence;
         }
 
-        currentFibSequence = fibonacciIterative(counter);
+        currentFibSequence = fibonacci(counter);
 
-        System.out.println("Next Fib was " + currentFibSequence + " at counter " + counter);
+        System.out.println("Next Fibonacci was " + currentFibSequence + " at counter " + counter);
 
         return currentFibSequence;
     }
@@ -40,14 +45,14 @@ public class FibonacciController {
             return currentFibSequence;
         }
 
-        currentFibSequence = fibonacciIterative(counter);
+        currentFibSequence = fibonacci(counter);
 
         return currentFibSequence;
     }
 
 
 
-    public long fibonacciIterative(long n) {
+    public long fibonacci(long n) {
         long a = 0, b = 1, c;
         if (n == 0) return a;
         for (int i = 2; i <= n; i++) {
@@ -56,24 +61,6 @@ public class FibonacciController {
             b = c;
         }
         return b;
-    }
-
-    public static void main(String[] args) {
-
-        FibonacciController controller = new FibonacciController();
-
-        long current;
-        long timeTaken;
-
-        current = System.currentTimeMillis();
-
-        for(int i = 0; i < 3000; i++){
-            long next = controller.next();
-        }
-
-        timeTaken = System.currentTimeMillis() - current;
-        System.out.println("Time taken to compute it : " + timeTaken + " milliseconds");
-
     }
 
 }
