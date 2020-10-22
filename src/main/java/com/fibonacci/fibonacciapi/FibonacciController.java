@@ -11,12 +11,12 @@ public class FibonacciController {
         return 0;
     }
 
-    @GetMapping("/current")
+    @GetMapping("/next")
     public long next(){
         return 1;
     }
 
-    @GetMapping("/current")
+    @GetMapping("/previous")
     public long previous(){
         return 0;
     }
