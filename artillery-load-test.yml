@@ -6,7 +6,7 @@ config:
     timeout: 1
   phases:
     - duration: 5
-      arrivalRate: 1000
+      arrivalRate: 1100
 scenarios:
   - flow:
       - get:
