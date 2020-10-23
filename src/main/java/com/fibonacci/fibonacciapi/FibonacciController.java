@@ -18,46 +18,46 @@ public class FibonacciController {
     }
 
     @GetMapping("/next")
-    public synchronized long next(){
+    public long next(){
 
         counter++;
 
         if(counter > MAX_COUNT){
             counter = 0;
             currentFibSequence = 0;
-            System.out.println("Fibonacci started over. Now at " + currentFibSequence + " at counter " + counter);
+            //System.out.println("Fibonacci started over. Now at " + currentFibSequence + " at counter " + counter);
             return currentFibSequence;
         }
 
         currentFibSequence = fibonacci(counter);
 
-        //System.out.println("Next Fibonacci was " + currentFibSequence + " at counter " + counter);
+        if(counter % 10 == 0){
+            System.out.println("Fibonacci sequence is now " + currentFibSequence + " at counter " + counter);
+        }
 
         return currentFibSequence;
     }
 
     @GetMapping("/previous")
-    public synchronized long previous(){
+    public long previous(){
 
         counter--;
 
         if(counter < 0){
             counter = MAX_COUNT;
-            System.out.println("Fibonacci went to the end.");
+            //System.out.println("Fibonacci went to the end.");
         }
 
         currentFibSequence = fibonacci(counter);
 
-        //System.out.println("Previous Fibonacci was " + currentFibSequence + " at counter " + counter);
+        if(counter % 10 == 0){
+            System.out.println("Fibonacci sequence is now " + currentFibSequence + " at counter " + counter);
+        }
 
         return currentFibSequence;
     }
 
     public long fibonacci(long n) {
-
-        //if(1 > 0){
-            //return 5;
-        //}
 
         long a = 0, b = 1, c;
 
