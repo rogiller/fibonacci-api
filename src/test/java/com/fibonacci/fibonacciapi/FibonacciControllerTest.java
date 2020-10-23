@@ -9,12 +9,7 @@ class FibonacciControllerTest {
     FibonacciController tested = new FibonacciController();
 
     @Test
-    void testCurrent() {
-
-    }
-
-    @Test
-    void testNext() {
+    public void testNextTiming() {
 
         long current = System.currentTimeMillis();
         long timeTaken;
@@ -29,7 +24,7 @@ class FibonacciControllerTest {
     }
 
     @Test
-    void testPrevious() {
+    public void testPreviousTiming() {
 
         long current = System.currentTimeMillis();
         long timeTaken;
@@ -43,4 +38,21 @@ class FibonacciControllerTest {
         System.out.println("Time taken to compute it : " + timeTaken + " milliseconds");
 
     }
+
+    @Test
+    void testFibonacci() {
+        assertEquals(0, tested.fibonacci(0));
+        assertEquals(1, tested.fibonacci(1));
+        assertEquals(1, tested.fibonacci(2));
+        assertEquals(2, tested.fibonacci(3));
+        assertEquals(3, tested.fibonacci(4));
+        assertEquals(5, tested.fibonacci(5));
+        assertEquals(8, tested.fibonacci(6));
+        assertEquals(13, tested.fibonacci(7));
+        assertEquals(21, tested.fibonacci(8));
+        assertEquals(34, tested.fibonacci(9));
+        assertEquals(832040, tested.fibonacci(30));
+        assertEquals(102_334_155, tested.fibonacci(40));
+    }
+
 }
