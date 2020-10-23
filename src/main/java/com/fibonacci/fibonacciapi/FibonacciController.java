@@ -18,7 +18,7 @@ public class FibonacciController {
     }
 
     @GetMapping("/next")
-    public long next(){
+    public synchronized long next(){
 
         counter++;
 
@@ -31,13 +31,13 @@ public class FibonacciController {
 
         currentFibSequence = fibonacci(counter);
 
-        System.out.println("Next Fibonacci was " + currentFibSequence + " at counter " + counter);
+        //System.out.println("Next Fibonacci was " + currentFibSequence + " at counter " + counter);
 
         return currentFibSequence;
     }
 
     @GetMapping("/previous")
-    public long previous(){
+    public synchronized long previous(){
 
         counter--;
 
@@ -48,12 +48,16 @@ public class FibonacciController {
 
         currentFibSequence = fibonacci(counter);
 
-        System.out.println("Previous Fibonacci was " + currentFibSequence + " at counter " + counter);
+        //System.out.println("Previous Fibonacci was " + currentFibSequence + " at counter " + counter);
 
         return currentFibSequence;
     }
 
     public long fibonacci(long n) {
+
+        //if(1 > 0){
+            //return 5;
+        //}
 
         long a = 0, b = 1, c;
 
