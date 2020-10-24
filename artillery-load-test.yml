@@ -8,6 +8,17 @@ config:
     - duration: 5
       arrivalRate: 1000
 scenarios:
-  - flow:
+  - name: "Hit /current API [functions as a peak speed control for a Spring Boot app]"
+    flow:
+      - get:
+          url: "/current"
+
+  - name: "Hit /next API"
+    flow:
       - get:
           url: "/next"
+
+  - name: "Hit /previous API"
+    flow:
+      - get:
+          url: "/previous"
