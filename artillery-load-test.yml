@@ -5,13 +5,13 @@ config:
     # Responses have to be sent within 1 seconds or the request will be aborted
     timeout: 1
   phases:
-    - duration: 30
+    - duration: 2
       arrivalRate: 1000
 scenarios:
-  - name: "Hit /current API [functions as a peak speed control for a Spring Boot app]"
-    flow:
-      - get:
-          url: "/current"
+#  - name: "Hit /current API [functions as a peak speed control for a Spring Boot app]"
+#    flow:
+#      - get:
+#          url: "/current"
 
   - name: "Hit /next API"
     flow:
