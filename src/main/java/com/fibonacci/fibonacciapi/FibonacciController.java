@@ -25,14 +25,16 @@ public class FibonacciController {
         if(counter > MAX_COUNT){
             counter = 0;
             currentFibSequence = 0;
-            //System.out.println("Fibonacci started over. Now at " + currentFibSequence + " at counter " + counter);
             return currentFibSequence;
         }
 
-        currentFibSequence = fibonacci(counter);
+        //the fibonacci compute happens serially via synchronized here
+        synchronized (this){
+            currentFibSequence = fibonacci(counter);
+        }
 
         if(counter % 10 == 0){
-            System.out.println("Fibonacci sequence is now " + currentFibSequence + " at counter " + counter);
+            System.out.println("Fibonacci sequence increase to " + currentFibSequence + " with counter " + counter);
         }
 
         return currentFibSequence;
@@ -45,19 +47,23 @@ public class FibonacciController {
 
         if(counter < 0){
             counter = MAX_COUNT;
-            //System.out.println("Fibonacci went to the end.");
         }
 
-        currentFibSequence = fibonacci(counter);
+        //the fibonacci compute happens serially via synchronized here
+        synchronized (this){
+            currentFibSequence = fibonacci(counter);
+        }
 
         if(counter % 10 == 0){
-            System.out.println("Fibonacci sequence is now " + currentFibSequence + " at counter " + counter);
+            System.out.println("Fibonacci sequence decreased to " + currentFibSequence + " with counter " + counter);
         }
 
         return currentFibSequence;
     }
 
     public long fibonacci(long n) {
+
+        //TODO can we store instance variables to make this even faster?
 
         long a = 0, b = 1, c;
 
