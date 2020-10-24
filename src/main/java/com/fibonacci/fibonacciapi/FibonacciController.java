@@ -1,10 +1,14 @@
 package com.fibonacci.fibonacciapi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FibonacciController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FibonacciController.class);
 
     public static final int MAX_FIB_COUNT = 92;
 
@@ -34,7 +38,7 @@ public class FibonacciController {
         }
 
         if(counter % 10 == 0){
-            System.out.println("Fibonacci sequence increase to " + currentFibSequence + " with counter " + counter);
+            LOG.info("Fibonacci sequence increase to {} with counter {}", currentFibSequence, counter);
         }
 
         return currentFibSequence;
@@ -55,7 +59,7 @@ public class FibonacciController {
         }
 
         if(counter % 10 == 0){
-            System.out.println("Fibonacci sequence decreased to " + currentFibSequence + " with counter " + counter);
+            LOG.info("Fibonacci sequence decreased to {} with counter {}", currentFibSequence, counter);
         }
 
         return currentFibSequence;
