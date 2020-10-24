@@ -2,11 +2,11 @@
 
 ### Running the Fibonacci Api
 
-To use a pre-compiled JAR go to `build/libs`
+**Note:** First make sure you have JDK 11 installed and active on your path for the commands below.
 
-run: `java -Xmx256m -jar fibonacci.jar`
+To use a pre-compiled JAR go to `build/libs` and run `java -Xmx256m -jar fibonacci.jar`
 
-From Repo Root: `./gradlew bootRun`
+Or from the Repo Root: `./gradlew bootRun`
 
 Fibonacci Endpoints are available at
 - http://localhost:8090/current
