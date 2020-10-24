@@ -37,7 +37,7 @@ public class FibonacciController {
             currentFibSequence = fibonacci(counter);
         }
 
-        if(counter % 10 == 0){
+        if(counter % 30 == 0){
             LOG.info("Fibonacci sequence increase to {} with counter {}", currentFibSequence, counter);
         }
 
@@ -58,7 +58,7 @@ public class FibonacciController {
             currentFibSequence = fibonacci(counter);
         }
 
-        if(counter % 10 == 0){
+        if(counter % 30 == 0){
             LOG.info("Fibonacci sequence decreased to {} with counter {}", currentFibSequence, counter);
         }
 
