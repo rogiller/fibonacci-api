@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FibonacciController {
 
-    public static final int MAX_COUNT = 92;
+    public static final int MAX_FIB_COUNT = 92;
 
     private long counter = 0;
 
@@ -22,7 +22,7 @@ public class FibonacciController {
 
         counter++;
 
-        if(counter > MAX_COUNT){
+        if(counter > MAX_FIB_COUNT){
             counter = 0;
             currentFibSequence = 0;
             return currentFibSequence;
@@ -46,7 +46,7 @@ public class FibonacciController {
         counter--;
 
         if(counter < 0){
-            counter = MAX_COUNT;
+            counter = MAX_FIB_COUNT;
         }
 
         //the fibonacci compute happens serially via synchronized here
