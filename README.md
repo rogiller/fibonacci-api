@@ -22,7 +22,7 @@ If you go much higher than the 200 reqs per second, Spring Boot will fall over.
 
 **Moral:** The Fibonacci function in the `FibonacciController` is NOT the bottle neck. 
 If you check the `FibonacciControllerTest` timing tests, you will see that it can do
-10000+ Fibonacci computes in less than 100 millisecons.
+10000+ Fibonacci computes in less than 100 milliseconds.
 
 
 
