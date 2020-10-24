@@ -24,5 +24,12 @@ If you go much higher than the 200 reqs per second, Spring Boot will fall over.
 If you check the `FibonacciControllerTest` timing tests, you will see that it can do
 10000+ Fibonacci computes in less than 100 milliseconds.
 
+### Artillery Load Testing
+
+If you install Artillery (`npm install -g artillery`), 
+you can run some load tests from the repo root.
+ 
+ Run: `artillery run artillery-load-test.yml`
+
 
 
