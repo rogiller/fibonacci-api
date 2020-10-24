@@ -67,8 +67,6 @@ public class FibonacciController {
 
     public long fibonacci(long n) {
 
-        //TODO can we store instance variables to make this even faster?
-
         long a = 0, b = 1, c;
 
         if (n == 0){
