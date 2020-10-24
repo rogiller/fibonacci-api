@@ -32,7 +32,7 @@ public class FibonacciController {
             return currentFibSequence;
         }
 
-        //the fibonacci compute happens serially via synchronized here
+        //the fibonacci compute happens atomically via synchronized here
         synchronized (this){
             currentFibSequence = fibonacci(counter);
         }
@@ -53,7 +53,7 @@ public class FibonacciController {
             counter = MAX_FIB_COUNT;
         }
 
-        //the fibonacci compute happens serially via synchronized here
+        //the fibonacci compute happens atomically via synchronized here
         synchronized (this){
             currentFibSequence = fibonacci(counter);
         }
